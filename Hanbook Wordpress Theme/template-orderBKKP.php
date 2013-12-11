@@ -32,10 +32,6 @@ Template Name:post-order
 
 
 
-<ul class="main-thumbnail">
-
-<li class="active-thumb">
-
 
 
 
@@ -85,162 +81,29 @@ if ($customer_orders) :
 ?>
 
 
-
-
-
-
-
-
-
-
-<?php $count=1;
-foreach ($customer_orders as $customer_order) :
-$order = new WC_Order(); 
-//print_r($customer_order);
-$order->populate( $customer_order );
-$status = get_term_by('slug', $order->status, 'shop_order_status');$custom_order = get_post_meta($customer_order->ID,'_custom_order',true);
-
-
-# if it is a custom order 
-if($custom_order <> 'true') { 
-?>
-<tr> 
-<td class="aa" width="113" height="40" align="left" valign="middle"><a href="<?php echo esc_url( add_query_arg('order', $order->id, get_permalink(woocommerce_get_page_id('view_order'))) ); ?>"><?php echo $order->get_order_number(); ?></a></td>
-<td width="113" height="40" align="left" valign="middle"><?php $price = $order->get_formatted_order_total(); if($price=='$0'){ echo 'N/A'; } else { echo $price; }?> </td>
-<td width="313" height="40" align="left" valign="middle"><?php
-	if (sizeof($order->get_items())>0) :
-	foreach($order->get_items() as $item) :
-	if (isset($item['variation_id']) && $item['variation_id'] > 0) :
-	$_product = new WC_Product_Variation( $item['variation_id'] );
-	else :
-	$_product = new WC_Product( $item['id'] );
-	endif;
-	echo '
-	';
-	echo '<a href="'.esc_url( add_query_arg('order', $order->id, get_permalink(woocommerce_get_page_id('view_order'))) ).'">' . $item['name'] . '</a>';
-	$item_meta = new WC_Order_Item_Meta( $item['item_meta'] );
-	$item_meta->display();
-	if ( $_product->exists() && $_product->is_downloadable() && $_product->has_file() && ( $order->status=='completed' || ( get_option( 'woocommerce_downloads_grant_access_after_payment' ) == 'yes' && $order->status == 'processing' ) ) ) :
-	echo '<small><a href="' . $order->get_downloadable_file_url( $item['id'], $item['variation_id'] ) . '">' . __('Download file &rarr;', 'woocommerce') . '</a></small>';
-	endif;
-	// Show any purchase notes
-	if ($order->status=='completed' || $order->status=='processing') :
-	if ($purchase_note = get_post_meta( $_product->id, '_purchase_note', true)) :
-	echo '' . apply_filters('the_content', $purchase_note) . '';
-	endif;
-	endif;  
-	endforeach;
-	endif;
-	do_action( 'woocommerce_order_items_table', $order );
-	?></td>
-	<td width="150" height="40" align="left" valign="middle" style="padding-left:50px ;"><?php echo ucfirst( __( $status->name, 'woocommerce' ) ); ?>
-	<?php if (in_array($order->status, array('pending', 'failed'))) : ?>
-	<a href="<?php echo esc_url( $order->get_cancel_order_url() ); ?>" class="cancel" title="<?php _e('Click to cancel this order', 'woocommerce'); ?>">(<?php _e('Cancel', 'woocommerce'); ?>)</a>
-	<?php endif; ?></td>
-	<!--<td width="115" height="40" align="left" valign="middle"><?php //the_author(); ?></td>-->
-	<td height="40" text-align="right" style="text-align: right;">
-	<?php  
-	$actions = array();
-	if ( in_array( $order->status, apply_filters( 'woocommerce_valid_order_statuses_for_payment', array( 'pending', 'failed' ), $order ) ) )
-	$actions['pay'] = array(
-	'url'  => $order->get_checkout_payment_url(),
-	'name' => __( 'Pay', 'woocommerce' )
-	);
-	if ( in_array( $order->status, apply_filters( 'woocommerce_valid_order_statuses_for_cancel', array( 'pending', 'failed' ), $order ) ) )
-	$actions['cancel'] = array(
-	'url'  => $order->get_cancel_order_url(),
-	'name' => __( 'Cancel', 'woocommerce' )
-	);
-	$actions['view'] = array(
-	'url'  => add_query_arg( 'order', $order->id, get_permalink( woocommerce_get_page_id( 'view_order' ) ) ),
-	'name' => __( 'View', 'woocommerce' )
-	);
-	$actions = apply_filters( 'woocommerce_my_account_my_orders_actions', $actions, $order );
-	foreach( $actions as $key => $action ) {
-	$addC='';if($key == 'pay') { $addC = 'new-button'; } else { $addC = 'view-button'; }
-	echo '<a href="' . esc_url( $action['url'] ) . '" class="'.$addCXX.' button ' . sanitize_html_class( $key ) . '">' . esc_html( $action['name'] ) . '</a>';
-	}
-	?>
-</td>
-</tr>
-<?php } $count++; endforeach; ?>
-<?php endif; ?> 
-
-
-</table>
-</td>
-</tr>
-</table>
-
-
-
-
-
-
-</li>
-<li class="inactive">
-
-
-
-
-
-<table width="940" border="0" cellspacing="0" cellpadding="0" class="event_table">
-<tr>
-<th scope="col">
-<table width="1000" border="0" cellspacing="0" cellpadding="0">
-<?php $i=1;
-if (have_posts()) : while (have_posts()) : the_post(); ?>
-<?php $orderno = get_post_meta($post->ID, "wpcf-order-no", true); ?>
-<?php $catname = get_post_meta($post->ID, "wpcf-category-name", true); ?>
-<?php $rhedaing = get_post_meta($post->ID, "wpcf-reply-heading", true); ?>
-<?php $post2 = get_post_meta($post->ID, "wpcf-post-date", true); ?>
-<?php $subject = get_post_meta($post->ID, "wpcf-subject", true); ?>
-<?php $post = get_post_meta($post->ID, "wpcf-post", true); ?>
-<tr>          
-<td width="113" height="40" align="left" valign="middle"><?php echo stripslashes($orderno); ?></td>
-<td width="113" height="40" align="left" valign="middle"><?php echo stripslashes($catname); ?></td>
-<td width="313" height="40" align="left" valign="middle"><?php echo stripslashes($subject); ?></td>
-<td width="150" height="40" align="left" valign="middle" style="padding-left:50px;"><?php echo stripslashes($rhedaing); ?></td>
-<!--<td width="115" height="40" align="left" valign="middle"><?php //echo stripslashes($post); ?></td>-->
-<td class="aa" height="40" align="left" valign="middle"><?php //echo $post2; ?></td>
-</tr>
 <?php 
-endwhile; endif;
-wp_reset_query();
-?> 
-</table>
-</th>
-</tr>
-<tr>
-<td><table width="1000" border="0" cellspacing="0" cellpadding="0">
-<?php
-global $woocommerce;
-$customer_id = get_current_user_id();
-$args = array(
-'numberposts'     => $recent_orders,
-'post_type'       => 'shop_order',
-'post_status'     => 'publish'
-);
-$customer_orders = get_posts($args);
-if ($customer_orders) :
-?>
 
-<?php $count=1;
+$count=1;
 foreach ($customer_orders as $customer_order) :
 $order = new WC_Order(); 
-//print_r($customer_order);
+// print_r($customer_order);
 $order->populate( $customer_order );
 $status = get_term_by('slug', $order->status, 'shop_order_status');
 $custom_order = get_post_meta($customer_order->ID,'_custom_order',true);
 
 
 # if it is a custom order 
-if($custom_order == 'true') { 
-?>
-<tr> 
-<td class="aa" width="113" height="40" align="left" valign="middle"><a href="<?php echo esc_url( add_query_arg('order', $order->id, get_permalink(woocommerce_get_page_id('view_order'))) ); ?>"><?php echo $order->get_order_number(); ?></a></td>
-<td width="113" height="40" align="left" valign="middle"><?php $price = $order->get_formatted_order_total(); if($price=='$0'){ echo 'N/A'; } else { echo $price; }?> </td>
-<td width="313" height="40" align="left" valign="middle"><?php
+if($custom_order <> 'true') { 
+
+
+$output1 .= '<tr> 
+<td class="aa" width="113" height="40" align="left" valign="middle"><a href="'.esc_url( add_query_arg("order", $order->id, get_permalink(woocommerce_get_page_id("view_order"))) ).'">'.$order->get_order_number().'</a></td><td width="113" height="40" align="left" valign="middle">';
+$price = $order->get_formatted_order_total(); 
+if($price=='$0'){ $output1 .=  'N/A'; } else { $output1 .=  $price; }  
+$output1 .= '</td>';
+
+$output1 .='
+<td width="313" height="40" align="left" valign="middle">';
 	if (sizeof($order->get_items())>0) :
 	foreach($order->get_items() as $item) :
 	if (isset($item['variation_id']) && $item['variation_id'] > 0) :
@@ -248,31 +111,33 @@ if($custom_order == 'true') {
 	else :
 	$_product = new WC_Product( $item['id'] );
 	endif;
-	echo '
-	';
-	echo '<a href="'.esc_url( add_query_arg('order', $order->id, get_permalink(woocommerce_get_page_id('view_order'))) ).'">' . $item['name'] . '</a>';
+	$output1 .=  '';
+	$output1 .=  '<a href="'.esc_url( add_query_arg("order", $order->id, get_permalink(woocommerce_get_page_id("view_order"))) ).'">' . $item["name"] . '</a>';
 	$item_meta = new WC_Order_Item_Meta( $item['item_meta'] );
 	$item_meta->display();
-	if ( $_product->exists() && $_product->is_downloadable() && $_product->has_file() && ( $order->status=='completed' || ( get_option( 'woocommerce_downloads_grant_access_after_payment' ) == 'yes' && $order->status == 'processing' ) ) ) :
-	echo '<small><a href="' . $order->get_downloadable_file_url( $item['id'], $item['variation_id'] ) . '">' . __('Download file &rarr;', 'woocommerce') . '</a></small>';
+	if ( $_product->exists() && $_product->is_downloadable() && $_product->has_file() && ( $order->status=="completed" || ( get_option( "woocommerce_downloads_grant_access_after_payment" ) == "yes" && $order->status == "processing" ) ) ) :
+	$output1 .=  '<small><a href="' . $order->get_downloadable_file_url( $item['id'], $item['variation_id'] ) . '">' . __("Download file &rarr;", "woocommerce") . '</a></small>';
 	endif;
 	// Show any purchase notes
 	if ($order->status=='completed' || $order->status=='processing') :
 	if ($purchase_note = get_post_meta( $_product->id, '_purchase_note', true)) :
-	echo '' . apply_filters('the_content', $purchase_note) . '';
+	$output1 .=  '' . apply_filters('the_content', $purchase_note) . '';
 	endif;
 	endif;  
 	endforeach;
 	endif;
 	do_action( 'woocommerce_order_items_table', $order );
-	?></td>
-	<td width="150" height="40" align="left" valign="middle" style="padding-left:50px ;"><?php echo ucfirst( __( $status->name, 'woocommerce' ) ); ?>
-	<?php if (in_array($order->status, array('pending', 'failed'))) : ?>
-	<a href="<?php echo esc_url( $order->get_cancel_order_url() ); ?>" class="cancel" title="<?php _e('Click to cancel this order', 'woocommerce'); ?>">(<?php _e('Cancel', 'woocommerce'); ?>)</a>
-	<?php endif; ?></td>
+	
+	$output1 .=  '</td><td width="150" height="40" align="left" valign="middle" style="padding-left:50px ;">';
+	$output1 .=  ucfirst( __( $status->name, 'woocommerce' ) ); 
+	if (in_array($order->status, array("pending", "failed"))) : 
+	$output1 .=  '<a href="'.esc_url( $order->get_cancel_order_url() ).'" class="cancel" title="'._e('Click to cancel this order', 'woocommerce').'">('._e("Cancel", "woocommerce").')</a>';
+	endif; 
+	$output1 .=  '
+	</td>
 	<!--<td width="115" height="40" align="left" valign="middle"><?php //the_author(); ?></td>-->
-	<td height="40" text-align="right" style="text-align: right;">
-	<?php  
+	<td height="40" text-align="right" style="text-align: right;">';
+	 
 	$actions = array();
 	if ( in_array( $order->status, apply_filters( 'woocommerce_valid_order_statuses_for_payment', array( 'pending', 'failed' ), $order ) ) )
 	$actions['pay'] = array(
@@ -290,29 +155,89 @@ if($custom_order == 'true') {
 	);
 	$actions = apply_filters( 'woocommerce_my_account_my_orders_actions', $actions, $order );
 	foreach( $actions as $key => $action ) {
-	$addC='';if($key == 'pay') { $addC = 'new-button'; } else { $addC = 'view-button'; }
-	echo '<a href="' . esc_url( $action['url'] ) . '" class="'.$addCXX.' button ' . sanitize_html_class( $key ) . '">' . esc_html( $action['name'] ) . '</a>';
+	$addC =''; if($key == 'pay') { $addC = 'new-button'; } else { $addC = 'view-button'; }
+	$output1 .=  '<a href="' . esc_url( $action['url'] ) . '" class="'.$addCXX.' button ' . sanitize_html_class( $key ) . '">' . esc_html( $action['name'] ) . '</a>';
 	}
-	?>
-</td>
-</tr>
-<?php } $count++; endforeach; ?>
+$output1 .=  '</td></tr>';
+
+} else { 
+
+$output2 .= '<tr> 
+<td class="aa" width="113" height="40" align="left" valign="middle"><a href="'.esc_url( add_query_arg("order", $order->id, get_permalink(woocommerce_get_page_id("view_order"))) ).'">'.$order->get_order_number().'</a></td><td width="113" height="40" align="left" valign="middle">';
+$price = $order->get_formatted_order_total(); 
+if($price=='$0'){ $output2 .=  'N/A'; } else { $output2 .=  $price; }  
+$output2 .= '</td>';
+
+$output2 .='
+<td width="313" height="40" align="left" valign="middle">';
+	if (sizeof($order->get_items())>0) :
+	foreach($order->get_items() as $item) :
+	if (isset($item['variation_id']) && $item['variation_id'] > 0) :
+	$_product = new WC_Product_Variation( $item['variation_id'] );
+	else :
+	$_product = new WC_Product( $item['id'] );
+	endif;
+	$output2 .=  '';
+	$output2 .=  '<a href="'.esc_url( add_query_arg("order", $order->id, get_permalink(woocommerce_get_page_id("view_order"))) ).'">' . $item["name"] . '</a>';
+	$item_meta = new WC_Order_Item_Meta( $item['item_meta'] );
+	$item_meta->display();
+	if ( $_product->exists() && $_product->is_downloadable() && $_product->has_file() && ( $order->status=="completed" || ( get_option( "woocommerce_downloads_grant_access_after_payment" ) == "yes" && $order->status == "processing" ) ) ) :
+	$output2 .=  '<small><a href="' . $order->get_downloadable_file_url( $item['id'], $item['variation_id'] ) . '">' . __("Download file &rarr;", "woocommerce") . '</a></small>';
+	endif;
+	// Show any purchase notes
+	if ($order->status=='completed' || $order->status=='processing') :
+	if ($purchase_note = get_post_meta( $_product->id, '_purchase_note', true)) :
+	$output2 .=  '' . apply_filters('the_content', $purchase_note) . '';
+	endif;
+	endif;  
+	endforeach;
+	endif;
+	do_action( 'woocommerce_order_items_table', $order );
+	
+	$output2 .=  '</td><td width="150" height="40" align="left" valign="middle" style="padding-left:50px ;">';
+	$output2 .=  ucfirst( __( $status->name, 'woocommerce' ) ); 
+	if (in_array($order->status, array("pending", "failed"))) : 
+	$output2 .=  '<a href="'.esc_url( $order->get_cancel_order_url() ).'" class="cancel" title="'._e('Click to cancel this order', 'woocommerce').'">('._e("Cancel", "woocommerce").')</a>';
+	endif; 
+	$output2 .=  '
+	</td>
+	<!--<td width="115" height="40" align="left" valign="middle"><?php //the_author(); ?></td>-->
+	<td height="40" text-align="right" style="text-align: right;">';
+	 
+	$actions = array();
+	if ( in_array( $order->status, apply_filters( 'woocommerce_valid_order_statuses_for_payment', array( 'pending', 'failed' ), $order ) ) )
+	$actions['pay'] = array(
+	'url'  => $order->get_checkout_payment_url(),
+	'name' => __( 'Pay', 'woocommerce' )
+	);
+	if ( in_array( $order->status, apply_filters( 'woocommerce_valid_order_statuses_for_cancel', array( 'pending', 'failed' ), $order ) ) )
+	$actions['cancel'] = array(
+	'url'  => $order->get_cancel_order_url(),
+	'name' => __( 'Cancel', 'woocommerce' )
+	);
+	$actions['view'] = array(
+	'url'  => add_query_arg( 'order', $order->id, get_permalink( woocommerce_get_page_id( 'view_order' ) ) ),
+	'name' => __( 'View', 'woocommerce' )
+	);
+	$actions = apply_filters( 'woocommerce_my_account_my_orders_actions', $actions, $order );
+	foreach( $actions as $key => $action ) {
+	$addC =''; if($key == 'pay') { $addC = 'new-button'; } else { $addC = 'view-button'; }
+	$output2 .=  '<a href="' . esc_url( $action['url'] ) . '" class="'.$addCXX.' button ' . sanitize_html_class( $key ) . '">' . esc_html( $action['name'] ) . '</a>';
+	}
+$output2 .=  '</td></tr>'; ?>
+
+
+<?php  } $count++; endforeach; ?>
 <?php endif; ?> 
 
-
+<ul class="main-thumbnail">
+<li class="active-thumb new"><?php echo $output1; ?></li>
+<li><?php echo $output2; ?></li>
+</ul>
 </table>
 </td>
 </tr>
 </table>
-
-
-
-</li>
-</ul>
-
-
-
-
 
 
 </div>

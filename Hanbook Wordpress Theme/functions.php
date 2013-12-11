@@ -1,6 +1,7 @@
 <?php
 
 function my_project_updated_send_email( $post_id ) {
+global $wpdb;
 
 $slug = 'shop_order';
 if ( $slug != $_POST['post_type'] ) {
@@ -22,6 +23,19 @@ foreach ( $items as $item ) {
     $product_id = $item['product_id'];
     $product_variation_id = $item['variation_id'];
 }
+
+# Updating custom table record for the order.
+
+$wpdb->update( 
+	'custom_orders', 
+	array(  
+		'order_name' => $product_name, 
+		'order_quantity' => $quantity,
+		'order_total' => $_order_total,
+		'order_status' => $order_status
+	), array( 'order_id' => $ID )
+);
+
 
 $subject = 'Order Status Changed for #'.$ID;
 $to = $user->user_email;

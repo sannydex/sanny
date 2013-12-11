@@ -29,10 +29,35 @@ $item_id = woocommerce_add_order_item( $new_coupon_id, array('order_item_name' =
 
 update_post_meta( $new_coupon_id, '_customer_user', $user_id);
 update_post_meta( $new_coupon_id, '_quoted_product', 'no link');
+update_post_meta( $new_coupon_id, '_custom_order', 'true');
 // Add line item meta
 if ( $item_id ) {
 woocommerce_add_order_item_meta( $item_id, '_qty', apply_filters( 'woocommerce_stock_amount', $quantity ) );
 }
+
+
+
+# Hook the details to a Custom tables
+global $wpdb;
+$wpdb->insert( 
+	'custom_orders', 
+	array( 
+		'order_id' => $new_coupon_id, 
+		'order_name' => $book_name,
+		'order_description' => $book_description, 
+		'order_quantity' => $quantity,
+		'order_total' => 'Not Set',
+		'order_status' => 'waiting for approval', 
+		'customer_id' => $user_id 				
+	)
+);
+
+
+
+
+
+
+# Email Content Setup
 
 $order_url = site_url().'/wp-admin/post.php?post='.$new_coupon_id.'&action=edit';
 $newproduct_url = site_url().'/wp-admin/post-new.php?post_type=product';
@@ -51,8 +76,6 @@ Here is the order link <div style='clear: both;margin: 10px 0;width: 100%;text-a
 Thanks</p>";
 wp_mail( $multiple_to_recipients,$subject,$message);
 remove_filter( 'wp_mail_content_type', 'set_html_content_type' );
-
-
 $url = site_url().'/order-sales';
 wp_redirect( $url ,301 );
 }
