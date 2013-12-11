@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="viewport" content="width=device-width, maximum-scale=2.0, minimum-scale=0.3">
+<title>:: Welcome to Hanbook ::</title>
+<link href="style/style.css" rel="stylesheet" type="text/css" />
+<link href="style/slider.css" rel="stylesheet" type="text/css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="js/Slideshow.js" charset="utf-8"></script>
+
+<link href="style/woocommerce.css" rel="stylesheet" type="text/css" />
+<script type='text/javascript' src='http://freezi.com/development/hanbooks/wp-includes/js/jquery/jquery.js?ver=1.8.3'></script>
+</head>
+
+<body>
+<!--TOP PANEL START -->
+<div class="top_panel">
+	<div class="maincontaner">
+    	<ul>
+        	<li><a href="#">Home</a></li>
+            <li><a href="#">Sign in</a></li>
+            <li><a href="#" class="cart">Shopping Cart</a></li>
+        </ul>
+    </div>
+</div>
+<!--TOP PANEL END -->
+<!--LOGO PANEL START -->
+<div class="maincontaner logopanel">
+	<a href="index.html" class="logo"><img src="images/logo.png" width="293" height="66" alt="Logo" /></a>
+    <form action="" enctype="multipart/form-data" method="post">
+    	<input type="text" class="textbox" value="Search with keyword ..." />
+        <input type="submit" class="search" />
+    </form>
+</div>
+<!--LOGO PANEL END -->
+<!--NAVIGATION START -->
+<div class="navigation_panel">
+	<div class="maincontaner navigation">
+    	<ul>
+        	<li class="current_page_item"><a href="#">한북클럽소개 </a></li>
+            <li><a href="#">이달의 책</a></li>
+            <li><a href="#">스테디셀러 </a></li>
+            <li><a href="#">기타상품</a></li>
+            <li><a href="#">공지사항/이벤트</a></li>
+            <li><a href="#">주문판매</a></li>
+            <li class="nodevider"><a href="#">Q&A</a></li>
+        </ul>
+    </div>
+</div>
+<!--NAVIGATION END -->
+<!--BREADCUM START -->
+<div class="maincontaner breadcum">
+	<ul>
+    	<li class="nodevider"><a href="#">Home</a></li>
+        <li>Events</li>
+    </ul>
+</div>
+<!--BREADCUM END -->
+<!--BODY PANEL START -->
+<div class="maincontaner body_panel">
+	
+   <h1> Checkout</h1>
+<div class="woocommerce">
+
+<form method="post" action="http://freezi.com/development/hanbooks/cart/">
+
+
+<table cellspacing="0" class="shop_table cart">
+	<thead>
+		<tr>
+			<th class="product-remove">&nbsp;</th>
+			<th class="product-thumbnail">&nbsp;</th>
+			<th class="product-name">Product</th>
+			<th class="product-price">가격</th>
+			<th class="product-quantity">양</th>
+			<th class="product-subtotal">합계</th>
+		</tr>
+	</thead>
+	<tbody>
+		
+							<tr class="cart_table_item">
+						<!-- Remove from cart link -->
+						<td class="product-remove">
+							<a title="Remove this item" class="remove" href="http://freezi.com/development/hanbooks/cart/?remove_item=6f4922f45568161a8cdf4ad2299f6d23&amp;_n=27678f69b6">Remove</a>						</td>
+
+						<!-- The thumbnail -->
+						<td class="product-thumbnail">
+							<a href="http://freezi.com/development/hanbooks/제품/%ec%9b%8c%eb%93%9c%ed%94%84%eb%a0%88%ec%8a%a4%ec%97%90-%ec%98%a4%ec%8b%a0/"><img width="90" height="90" alt="Placeholder" src="http://freezi.com/development/hanbooks/wp-content/plugins/woocommerce/assets/images/placeholder.png"></a>						</td>
+
+						<!-- Product Name -->
+						<td class="product-name">
+							<a href="http://freezi.com/development/hanbooks/제품/%ec%9b%8c%eb%93%9c%ed%94%84%eb%a0%88%ec%8a%a4%ec%97%90-%ec%98%a4%ec%8b%a0/">워드프레스에 오신</a>						</td>
+
+						<!-- Product price -->
+						<td class="product-price">
+							<span class="amount">$299</span>						</td>
+
+						<!-- Quantity inputs -->
+						<td class="product-quantity">
+							<div class="quantity buttons_added"><input type="button" class="minus" value="-"><input type="number" maxlength="12" class="input-text qty text" title="Qty" size="4" value="3" max="" min="" step="1" name="cart[6f4922f45568161a8cdf4ad2299f6d23][qty]"><input type="button" class="plus" value="+"></div>						</td>
+
+						<!-- Product subtotal -->
+						<td class="product-subtotal">
+							<span class="amount">$897</span>						</td>
+					</tr>
+							<tr>
+			<td class="actions" colspan="6">
+
+									<div class="coupon">
+
+						<label for="coupon_code">Coupon:</label> <input value="" id="coupon_code" class="input-text" name="coupon_code"> <input type="submit" value="쿠폰쓰기" name="apply_coupon" class="button">
+
+						
+					</div>
+				
+				<input type="submit" value="장바구니 업데이트" name="update_cart" class="button"> <input type="submit" value="체크아웃으로 이동 →" name="proceed" class="checkout-button button alt">
+
+				
+				<input type="hidden" value="27678f69b6" name="_n" id="_n"><input type="hidden" value="/development/hanbooks/cart/" name="_wp_http_referer">			</td>
+		</tr>
+
+			</tbody>
+</table>
+
+
+</form>
+
+<div class="cart-collaterals">
+
+	
+	<div class="cart_totals ">
+
+	
+	
+		<h2>장바구니 합계</h2>
+
+		<table cellspacing="0">
+			<tbody>
+
+				<tr class="cart-subtotal">
+					<th><strong>장바구니 소계</strong></th>
+					<td><strong><span class="amount">$897</span></strong></td>
+				</tr>
+
+				
+				
+					
+					<tr class="shipping">
+						<th>배송</th>
+						<td>Free Shipping<input type="hidden" value="free_shipping" id="shipping_method" name="shipping_method"></td>
+					</tr>
+
+					
+				
+				
+				
+				
+				
+				<tr class="total">
+					<th><strong>주문 합계</strong></th>
+					<td>
+						<strong><span class="amount">$897</span></strong>
+											</td>
+				</tr>
+
+				
+			</tbody>
+		</table>
+
+		
+	
+	
+</div>
+	
+
+<form method="post" action="http://freezi.com/development/hanbooks/cart/" class="shipping_calculator">
+
+	<h2><a class="shipping-calculator-button" href="#">배송비 계산 <span>↓</span></a></h2>
+
+	<section class="shipping-calculator-form" style="display: none;">
+
+		<p class="form-row form-row-wide">
+			<select rel="calc_shipping_state" class="country_to_state" id="calc_shipping_country" name="calc_shipping_country">
+				<option value="">Select a country…</option>
+				<option value="AX">Åland Islands</option><option value="AF">Afghanistan</option><option value="AL">Albania</option><option value="DZ">Algeria</option><option value="AD">Andorra</option><option value="AO">Angola</option><option value="AI">Anguilla</option><option value="AQ">Antarctica</option><option value="AG">Antigua and Barbuda</option><option value="AR">Argentina</option><option value="AM">Armenia</option><option value="AW">Aruba</option><option value="AU">Australia</option><option value="AT">Austria</option><option value="AZ">Azerbaijan</option><option value="BS">Bahamas</option><option value="BH">Bahrain</option><option value="BD">Bangladesh</option><option value="BB">Barbados</option><option value="BY">Belarus</option><option value="PW">Belau</option><option value="BE">Belgium</option><option value="BZ">Belize</option><option value="BJ">Benin</option><option value="BM">Bermuda</option><option value="BT">Bhutan</option><option value="BO">Bolivia</option><option value="BQ">Bonaire, Saint Eustatius and Saba</option><option value="BA">Bosnia and Herzegovina</option><option value="BW">Botswana</option><option value="BV">Bouvet Island</option><option value="BR">Brazil</option><option value="IO">British Indian Ocean Territory</option><option value="VG">British Virgin Islands</option><option value="BN">Brunei</option><option value="BG">Bulgaria</option><option value="BF">Burkina Faso</option><option value="BI">Burundi</option><option value="KH">Cambodia</option><option value="CM">Cameroon</option><option value="CA">Canada</option><option value="CV">Cape Verde</option><option value="KY">Cayman Islands</option><option value="CF">Central African Republic</option><option value="TD">Chad</option><option value="CL">Chile</option><option value="CN">China</option><option value="CX">Christmas Island</option><option value="CC">Cocos (Keeling) Islands</option><option value="CO">Colombia</option><option value="KM">Comoros</option><option value="CG">Congo (Brazzaville)</option><option value="CD">Congo (Kinshasa)</option><option value="CK">Cook Islands</option><option value="CR">Costa Rica</option><option value="HR">Croatia</option><option value="CU">Cuba</option><option value="CW">CuraÇao</option><option value="CY">Cyprus</option><option value="CZ">Czech Republic</option><option value="DK">Denmark</option><option value="DJ">Djibouti</option><option value="DM">Dominica</option><option value="DO">Dominican Republic</option><option value="EC">Ecuador</option><option value="EG">Egypt</option><option value="SV">El Salvador</option><option value="GQ">Equatorial Guinea</option><option value="ER">Eritrea</option><option value="EE">Estonia</option><option value="ET">Ethiopia</option><option value="FK">Falkland Islands</option><option value="FO">Faroe Islands</option><option value="FJ">Fiji</option><option value="FI">Finland</option><option value="FR">France</option><option value="GF">French Guiana</option><option value="PF">French Polynesia</option><option value="TF">French Southern Territories</option><option value="GA">Gabon</option><option value="GM">Gambia</option><option value="GE">Georgia</option><option value="DE">Germany</option><option value="GH">Ghana</option><option value="GI">Gibraltar</option><option value="GR">Greece</option><option value="GL">Greenland</option><option value="GD">Grenada</option><option value="GP">Guadeloupe</option><option value="GT">Guatemala</option><option value="GG">Guernsey</option><option value="GN">Guinea</option><option value="GW">Guinea-Bissau</option><option value="GY">Guyana</option><option value="HT">Haiti</option><option value="HM">Heard Island and McDonald Islands</option><option value="HN">Honduras</option><option value="HK">Hong Kong</option><option value="HU">Hungary</option><option value="IS">Iceland</option><option value="IN">India</option><option value="ID">Indonesia</option><option value="IR">Iran</option><option value="IQ">Iraq</option><option value="IM">Isle of Man</option><option value="IL">Israel</option><option value="IT">Italy</option><option value="CI">Ivory Coast</option><option value="JM">Jamaica</option><option value="JP">Japan</option><option value="JE">Jersey</option><option value="JO">Jordan</option><option value="KZ">Kazakhstan</option><option value="KE">Kenya</option><option value="KI">Kiribati</option><option value="KW">Kuwait</option><option value="KG">Kyrgyzstan</option><option value="LA">Laos</option><option value="LV">Latvia</option><option value="LB">Lebanon</option><option value="LS">Lesotho</option><option value="LR">Liberia</option><option value="LY">Libya</option><option value="LI">Liechtenstein</option><option value="LT">Lithuania</option><option value="LU">Luxembourg</option><option value="MO">Macao S.A.R., China</option><option value="MK">Macedonia</option><option value="MG">Madagascar</option><option value="MW">Malawi</option><option value="MY">Malaysia</option><option value="MV">Maldives</option><option value="ML">Mali</option><option value="MT">Malta</option><option value="MH">Marshall Islands</option><option value="MQ">Martinique</option><option value="MR">Mauritania</option><option value="MU">Mauritius</option><option value="YT">Mayotte</option><option value="MX">Mexico</option><option value="FM">Micronesia</option><option value="MD">Moldova</option><option value="MC">Monaco</option><option value="MN">Mongolia</option><option value="ME">Montenegro</option><option value="MS">Montserrat</option><option value="MA">Morocco</option><option value="MZ">Mozambique</option><option value="MM">Myanmar</option><option value="NA">Namibia</option><option value="NR">Nauru</option><option value="NP">Nepal</option><option value="NL">Netherlands</option><option value="AN">Netherlands Antilles</option><option value="NC">New Caledonia</option><option value="NZ">New Zealand</option><option value="NI">Nicaragua</option><option value="NE">Niger</option><option value="NG">Nigeria</option><option value="NU">Niue</option><option value="NF">Norfolk Island</option><option value="KP">North Korea</option><option value="NO">Norway</option><option value="OM">Oman</option><option value="PK">Pakistan</option><option value="PS">Palestinian Territory</option><option value="PA">Panama</option><option value="PG">Papua New Guinea</option><option value="PY">Paraguay</option><option value="PE">Peru</option><option value="PH">Philippines</option><option value="PN">Pitcairn</option><option value="PL">Poland</option><option value="PT">Portugal</option><option value="QA">Qatar</option><option value="IE">Republic of Ireland</option><option value="RE">Reunion</option><option value="RO">Romania</option><option value="RU">Russia</option><option value="RW">Rwanda</option><option value="ST">São Tomé and Príncipe</option><option value="BL">Saint Barthélemy</option><option value="SH">Saint Helena</option><option value="KN">Saint Kitts and Nevis</option><option value="LC">Saint Lucia</option><option value="SX">Saint Martin (Dutch part)</option><option value="MF">Saint Martin (French part)</option><option value="PM">Saint Pierre and Miquelon</option><option value="VC">Saint Vincent and the Grenadines</option><option value="SM">San Marino</option><option value="SA">Saudi Arabia</option><option value="SN">Senegal</option><option value="RS">Serbia</option><option value="SC">Seychelles</option><option value="SL">Sierra Leone</option><option value="SG">Singapore</option><option value="SK">Slovakia</option><option value="SI">Slovenia</option><option value="SB">Solomon Islands</option><option value="SO">Somalia</option><option value="ZA">South Africa</option><option value="GS">South Georgia/Sandwich Islands</option><option value="KR">South Korea</option><option value="SS">South Sudan</option><option value="ES">Spain</option><option value="LK">Sri Lanka</option><option value="SD">Sudan</option><option value="SR">Suriname</option><option value="SJ">Svalbard and Jan Mayen</option><option value="SZ">Swaziland</option><option value="SE">Sweden</option><option value="CH">Switzerland</option><option value="SY">Syria</option><option value="TW">Taiwan</option><option value="TJ">Tajikistan</option><option value="TZ">Tanzania</option><option value="TH">Thailand</option><option value="TL">Timor-Leste</option><option value="TG">Togo</option><option value="TK">Tokelau</option><option value="TO">Tonga</option><option value="TT">Trinidad and Tobago</option><option value="TN">Tunisia</option><option value="TR">Turkey</option><option value="TM">Turkmenistan</option><option value="TC">Turks and Caicos Islands</option><option value="TV">Tuvalu</option><option value="UG">Uganda</option><option value="UA">Ukraine</option><option value="AE">United Arab Emirates</option><option selected="selected" value="GB">United Kingdom</option><option value="US">United States</option><option value="UY">Uruguay</option><option value="UZ">Uzbekistan</option><option value="VU">Vanuatu</option><option value="VA">Vatican</option><option value="VE">Venezuela</option><option value="VN">Vietnam</option><option value="WF">Wallis and Futuna</option><option value="EH">Western Sahara</option><option value="WS">Western Samoa</option><option value="YE">Yemen</option><option value="ZM">Zambia</option><option value="ZW">Zimbabwe</option>			</select>
+		</p>
+
+		<p class="form-row form-row-wide">
+			<input type="text" id="calc_shipping_state" name="calc_shipping_state" placeholder="State / county" value="" class="input-text">		</p>
+
+		
+		
+			<p class="form-row form-row-wide">
+				<input type="text" id="calc_shipping_postcode" name="calc_shipping_postcode" placeholder="Postcode / Zip" value="" class="input-text">
+			</p>
+
+		
+		<p><button class="button" value="1" name="calc_shipping" type="submit">Update Totals</button></p>
+
+		<input type="hidden" value="27678f69b6" name="_n" id="_n"><input type="hidden" value="/development/hanbooks/cart/" name="_wp_http_referer">	</section>
+</form>
+
+
+</div>
+
+</div>
+</div>
+<!--BODY PANEL END -->
+<!--FOOTER PANEL START -->
+<div class="footer_panel">
+	<div class="maincontaner footer">
+    	<p class="alignleft">COPYRIGHT &copy; 2002-2013 Han Book Club. All Rights Reserved. </p>
+        <ul class="floatright">
+            <li><a href="#">한북클럽소개</a></li>
+            <li><a href="#">이달의 책</a></li>
+            <li><a href="#">스테디셀러</a></li>
+            <li><a href="#">베스트셀러</a></li>
+            <li><a href="#">기타상품</a></li>
+            <li><a href="#">공지사항/이벤트</a></li>
+            <li><a href="#">주문판매</a></li>
+        </ul>
+        <p class="alignleft">Design and Developed by <a href="http://dexusa.com/" title="Dexusa" target="_blank">DEXUSA</a></p>
+    </div>
+</div>
+<!--FOOTER PANEL END -->
+</body>
+</body>
+</html>

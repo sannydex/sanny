@@ -1,0 +1,76 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link href="style/standard.css" rel="stylesheet" type="text/css" />
+<title>:: Welcome to Hanbook ::</title><link rel="stylesheet" type="text/css" href="css/responsive.css" media="screen" />
+</head>
+<body>
+<div id="links-page">
+<table width="150px" height="800px" border="0" cellspacing="0" cellpadding="0">
+
+<tr>
+  <td width="100%" align="center" valign="top">
+  <h1><strong>:: Welcome to Hanbook ::</strong></h1>
+	  <div id="message">
+	  <p>&lsaquo;&lsaquo;  Click on the links on the left to view the design...</p>
+	  <p>&nbsp;</p>
+	  <p>Date: July 18, 2013 <br /></p></div>	</td>
+      </tr>
+  <tr>
+    <td width="100%" align="left" valign="top">	
+	<ul class="mockuplinks">
+		<li><a href="javascript:;" onclick="view(this,'index.html');">Home</a></li>
+        <li><a href="javascript:;" onclick="view(this,'inner1.html');">Product Listing Page</a></li>
+        <li><a href="javascript:;" onclick="view(this,'q-a.html');">Q & A Page</a></li>
+        <li><a href="javascript:;" onclick="view(this,'events.html');">Events Page</a></li>        
+        <li><a href="javascript:;" onclick="view(this,'sign_up.html');">Sign Up Page *</a></li>
+        <li><a href="javascript:;" onclick="view(this,'cart.html');">Cart Page *</a></li>
+        <li><a href="javascript:;" onclick="view(this,'check-out.html');">Check Out Page *</a></li>
+	</ul>
+</td></tr>
+
+      
+  
+</table>
+</div>
+<!-- jQuery for animation to Designer Credits block -->
+<script src="style/jquery-latest.js"></script> 
+<script>
+  $(document).ready(function(){
+  	$(".mockuplinks").click(function(){
+		$("#message").animate( { backgroundColor: '#000'}, 500)
+    	.animate( { backgroundColor: '#444444'}, 500);
+	});
+  });
+</script>
+
+<script src="style/jquery_color.js"></script>
+
+
+<script>
+
+function view(obj,page)
+{
+	windowname = "mainFrame";
+	window.open(page,windowname);
+	
+	objmessage = document.getElementById("message");
+	objmessage.innerHTML = "<h6>Currently Viewing</h6><h3>" + obj.innerHTML + "</h3>";
+	objmessage.innerHTML += "<a href=\"#\" onclick=\"openNewWindow('" + page + "','preview','status=yes,scrollbars=yes,resizable=yes,width=1100,height=1000')\">" + "Open this design in new Window" + "</a>";
+}
+</script>
+
+
+<script type="text/JavaScript">
+<!--
+function openNewWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+//-->
+</script>
+
+
+</body>
+</html>

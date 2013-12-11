@@ -1,0 +1,95 @@
+@charset "utf-8";
+/* CSS Document */
+
+div#tmpSlideshow {
+    position: relative;
+    width:863px;
+	height:380px;
+	background:url(../images/slider-bottom-shadow.png) no-repeat 50% 100%;
+	padding-bottom:80px;
+	overflow:hidden;
+	padding:0 70px 80px;
+}
+div#tmpSlideshow1 {
+    position: relative;
+    width: auto; min-height:510px; background:url(../images/slider-bottom-shadow.png) no-repeat 50% 100%; margin-bottom: 35px;
+}
+div.tmpSlide {
+    position: absolute;
+    top: 0;
+    left:70px;
+    display: none;
+}
+div.tmpSlide img {
+    float: left;
+    margin:0;
+}
+div#tmpSlideshowControls {
+    position: absolute;
+    bottom:53px;
+    left:477px;
+    width: 100px;
+}
+div#tmpSlideshowControls h4{
+	display:none;
+}
+div.tmpSlideshowControl {
+    float: left;
+    margin: 0 5px 0 0;
+    width:14px;
+    height:14px;
+	background:url(../images/slider-dot.png) no-repeat 0 0;
+	text-indent:-5000px;
+    cursor: pointer;
+}
+div.tmpSlideshowControl span {
+    line-height: 36px;
+    vertical-align: middle;
+}
+div.tmpSlideshowControlOn {
+}
+div.tmpSlideshowControlActive {
+    background:url(../images/slider-dot-active.png) no-repeat 0 0;
+}
+div.tmpSlideCopy {
+    position: absolute;
+    left:296px;
+    top:0;
+    width:570px;
+	font-size:14px;
+	line-height:22px;
+	color:#666666;
+	background-color:transparent;
+}
+div.tmpSlideCopy p {
+    font-size:14px;
+	line-height:22px;
+	padding-bottom:10px;
+}
+div.tmpSlideCopy p.heading{
+	font-size:35px;
+	line-height:55px;
+	color:#7c0046;
+	background-color:transparent;	
+}
+div.tmpSlideCopy p.heading span{
+	width:auto;
+	display:block;
+	clear:both;
+}
+div.tmpSlideCopy p.price{
+	padding-right:15px;
+	font-size:24px;
+	color:#7c0046;
+	background-color:transparent;
+}
+
+div.tmpSlideCopy_sin {
+    position:relative;
+    left:86px;
+    width:570px;
+	font-size:14px;
+	line-height:22px;
+	color:#666666;
+	background-color:transparent;
+}
